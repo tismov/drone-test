@@ -1,10 +1,10 @@
 kind: pipeline
-type: kubernetes
+type: docker
 name: default
-
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
+    - name: deploy_infra
+     image: bitnami/kubectl:latest
+     
+     commands:
+     - echo "Hello world"
+     - kubectl version
