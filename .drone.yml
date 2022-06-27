@@ -2,9 +2,9 @@ kind: pipeline
 type: docker
 name: default
 steps:
-    - name: deploy_infra
-     image: bitnami/kubectl:latest
+  - name: deploy_infra
+    image: bitnami/kubectl:latest
      
-     commands:
-     - echo "Hello world"
-     - kubectl version
+    commands:
+      - echo "Hello world"
+      - kubectl version
