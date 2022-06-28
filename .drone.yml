@@ -10,5 +10,5 @@ steps:
       - curl google.com
       - pwd
       - touch /tmp/test.yaml
-      - mv /tmp/test.yaml /usr/local/bin
+      - sudo mv /tmp/test.yaml /usr/local/bin
       - ls /usr/local/bin/test.yaml
