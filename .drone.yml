@@ -8,7 +8,8 @@ steps:
     commands:
       - echo "Hello world"
       - curl google.com
+      - pwd
       - touch /tmp/test.yaml
-      - mv /tmp/test.yaml ./
+      - cp /tmp/test.yaml ./
       - ls ./
       - eksctl version
