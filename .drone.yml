@@ -1,15 +1,13 @@
 kind: pipeline
 type: docker
 name: default
+
 steps:
   - name: deploy_infra
     image: bitnami/kubectl:latest
-     
+    environment:
+      test:
+        from_secret: hello
+    
     commands:
-      - echo "Hello world"
-      - curl google.com
-      - pwd
-      - curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-      - cd /tmp
-      - export PATH=$PWD:$PATH
-      - eksctl version
+      - ehco $test
