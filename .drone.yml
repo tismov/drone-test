@@ -4,10 +4,16 @@ name: default
 
 steps:
   - name: deploy_infra
-    image: bitnami/kubectl:latest
+    image: turik207/eksctl:0.103.0
     environment:
-      test:
-        from_secret: hello
+      keyid:
+        from_secret: keyid
+      key:
+        from_secret: key
     
     commands:
-      - echo $test
+      - export $keyid
+      - export $key
+      - echo $keyid >> test
+      - cat test
+      - ls
