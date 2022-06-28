@@ -10,6 +10,5 @@ steps:
       - curl google.com
       - pwd
       - touch /tmp/test.yaml
-      - cp /tmp/test.yaml ./
-      - ls ./
-      - eksctl version
+      - mv /tmp/test.yaml /usr/local/bin
+      - ls /usr/local/bin/test.yaml
