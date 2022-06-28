@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: deploy_infra
-    image: turik207/kops:1.23.2.1
+    image: turik207/kops:1.23.2.2
     environment:
       keyid:
         from_secret: keyid
