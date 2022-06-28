@@ -9,6 +9,7 @@ steps:
       - echo "Hello world"
       - curl google.com
       - pwd
-      - touch /tmp/test.yaml
-      - sudo mv /tmp/test.yaml /usr/local/bin
-      - ls /usr/local/bin/test.yaml
+      - curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      - cd /tmp
+      - export PATH=$PWD:$PATH
+      - eksctl version
