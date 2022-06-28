@@ -14,5 +14,5 @@ steps:
     commands:
       - export $keyid
       - export $key
-      - eksctl version
-      - eksctl create cluster -f eksctl-cluster.yml
+      - kops version
+      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
