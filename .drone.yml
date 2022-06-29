@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: deploy_infra
-    image: turik207/kops:1.23.2.5
+    image: turik207/kops:1.23.2.6
     environment:
       keyid:
         from_secret: keyid
@@ -15,4 +15,4 @@ steps:
       - export $keyid
       - export $key
       - kops version
-      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+      - kubectl version
