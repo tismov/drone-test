@@ -15,4 +15,4 @@ steps:
       - export $keyid
       - export $key
       - kops version
-      - kubectl version
+      - kubectl version --client
