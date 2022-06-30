@@ -5,7 +5,7 @@ name: default
 steps:
 
   - name: test
-    image: turik207/eksctl:0.103.0
+    image: turik207/kubectl:1.23
     environment:
       keyid:
         from_secret: keyid
@@ -14,7 +14,7 @@ steps:
     commands:
       - pwd
       - echo "Hello from first step" > step1
-#       - kubectl verion --client
+      - kubectl verion --client
       
   - name: kops_infra
     image: turik207/kops:1.23.2.6
