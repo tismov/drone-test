@@ -14,7 +14,7 @@ steps:
     commands:
       - pwd
       - echo "Hello from first step" > step1
-      - kubectl verion --client
+      - kubectl version --client
       
   - name: kops_infra
     image: turik207/kops:1.23.2.6
