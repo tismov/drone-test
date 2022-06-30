@@ -14,7 +14,7 @@ steps:
       - export $keyid
       - export $key
       - kops version
-      - echo "Hello from first step" > /tmp/step1
+      - echo "Hello from first step" > step1
       #- kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
       #- kops validate cluster --state=s3://kube-tismov-bt --wait 10m
       #- cat $HOME/.kube/config
@@ -31,5 +31,5 @@ steps:
     commands:
       - export $keyid
       - export $key
-      - cat /tmp/step1
+      - cat step1
 #       - kubectl get nodes
