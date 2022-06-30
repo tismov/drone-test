@@ -15,8 +15,7 @@ steps:
       - export $keyid
       - export $key
       - kops version
-      - sleep 10
-      # - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
 
   - name: kubectl
     image: bitnami/kubectl:latest
@@ -28,5 +27,6 @@ steps:
     
     commands:
       - export $keyid
-      - export $key     
-      - kubectl version --client
+      - export $key
+      - sleep 420 
+      - kubectl get nodes
