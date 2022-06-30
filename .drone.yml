@@ -4,17 +4,17 @@ name: default
 
 steps:
 
-  - name: test
-    image: turik207/kubectl:1.23
-    environment:
-      keyid:
-        from_secret: keyid
-      key:
-        from_secret: key
-    commands:
-      - pwd
-      - echo "Hello from first step" > step1
-      - kubectl version --client
+#   - name: test
+#     image: turik207/kubectl:1.23
+#     environment:
+#       keyid:
+#         from_secret: keyid
+#       key:
+#         from_secret: key
+#     commands:
+#       - pwd
+#       - echo "Hello from first step" > step1
+#       - kubectl version --client
       
   - name: kops_infra
     image: turik207/kops:1.23.2.7
@@ -24,18 +24,12 @@ steps:
       key:
         from_secret: key
     commands:
-      - cat step1
-      - echo "Hello from second step" > step2
       - export $keyid
       - export $key
-      - kops version
-      - kubectl version --client
-      - pwd
-#       - echo "Hello from first step" > step1
-      #- kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
-      #- kops validate cluster --state=s3://kube-tismov-bt --wait 10m
-      #- cat $HOME/.kube/config
-      #- cat $HOME/.kube/config > file
+      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+      - kops validate cluster --state=s3://kube-tismov-bt --wait 10m
+      - cat $HOME/.kube/config
+      - cat $HOME/.kube/config > config
       - ls -l
 
   - name: istioctl
@@ -48,7 +42,6 @@ steps:
     commands:
       - export $keyid
       - export $key
-      - echo "Hello from first step" > step3
-      - cat step1
-      - cat step2
+      - cp -r config HOME/.kube/
+      - kubectl get nodes
       - istioctl version
