@@ -37,6 +37,7 @@ steps:
     image: plugins/s3
     settings:
       bucket: k8s-kubeconfig-i7v
+      region: eu-central-1
       access_key:
         from_secret: keyid
       secret_key: 
