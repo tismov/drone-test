@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-  - name: deploy_infra
+  - name: kops_infra
     image: turik207/kops:1.23.2.6
     environment:
       keyid:
@@ -16,5 +16,17 @@ steps:
       - export $key
       - kops version
       - sleep 10
-      - kubectl version --client
       # - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+
+  - name: kubectl
+    image: bitnami/kubectl:latest
+    environment:
+      keyid:
+        from_secret: keyid
+      key:
+        from_secret: key
+    
+    commands:
+      - export $keyid
+      - export $key     
+      - kubectl version --client
