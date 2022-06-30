@@ -38,8 +38,8 @@ steps:
       #- cat $HOME/.kube/config > file
       - ls -l
 
-  - name: kubectl
-    image: bitnami/kubectl:latest
+  - name: istioctl
+    image: turik207/istio:1.14
     environment:
       keyid:
         from_secret: keyid
@@ -48,6 +48,7 @@ steps:
     commands:
       - export $keyid
       - export $key
+      - echo "Hello from first step" > step3
       - cat step1
       - cat step2
-#       - kubectl get nodes
+      - istioctl version
