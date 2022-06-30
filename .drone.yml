@@ -26,22 +26,35 @@ steps:
     commands:
       - export $keyid
       - export $key
-      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
-      - kops validate cluster --state=s3://kube-tismov-bt --wait 10m
-      - cat $HOME/.kube/config
-      - cat $HOME/.kube/config > config
+      # - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+      # - kops validate cluster --state=s3://kube-tismov-bt --wait 10m
+#       - cat $HOME/.kube/config
+#       - cat $HOME/.kube/config > config
+      - echo "this is config file" > config
       - ls -l
-
-  - name: istioctl
-    image: turik207/istio:1.14
-    environment:
-      keyid:
+      
+  - name: upload
+    image: plugins/s3
+    settings:
+      bucket: k8s-kubeconfig-i7v
+      access_key:
         from_secret: keyid
-      key:
+      secret_key: 
         from_secret: key
-    commands:
-      - export $keyid
-      - export $key
-      - cp -r config HOME/.kube/
-      - kubectl get nodes
-      - istioctl version
+      source: config
+      target: /
+
+
+#   - name: istioctl
+#     image: turik207/istio:1.14
+#     environment:
+#       keyid:
+#         from_secret: keyid
+#       key:
+#         from_secret: key
+#     commands:
+#       - export $keyid
+#       - export $key
+#       - cp -r config HOME/.kube/
+#       - kubectl get nodes
+#       - istioctl version
