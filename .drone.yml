@@ -3,6 +3,18 @@ type: docker
 name: default
 
 steps:
+
+  - name: test
+    image: docker.io/bitnami/minideb:bullseye
+    environment:
+      keyid:
+        from_secret: keyid
+      key:
+        from_secret: key
+    commands:
+      - pwd
+      - echo "Hello from first step" > step1
+      
   - name: kops_infra
     image: turik207/kops:1.23.2.6
     environment:
