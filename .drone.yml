@@ -15,5 +15,6 @@ steps:
       - export $keyid
       - export $key
       - kops version
+      - wait 10
       - kubectl version --client
-      - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
+      # - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
