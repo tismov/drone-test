@@ -23,11 +23,12 @@ steps:
       key:
         from_secret: key
     commands:
+      - cat step1
       - export $keyid
       - export $key
       - kops version
       - pwd
-      - echo "Hello from first step" > step1
+#       - echo "Hello from first step" > step1
       #- kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
       #- kops validate cluster --state=s3://kube-tismov-bt --wait 10m
       #- cat $HOME/.kube/config
