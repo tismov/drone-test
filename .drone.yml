@@ -25,7 +25,8 @@ steps:
         from_secret: accesskey
       secret_key:
         from_secret: secretkey
-      commands: aws s3 ls
+      commands: 
+        - aws --version
          
   - name: kops_infra
     image: turik207/kops:1.23.2.7
