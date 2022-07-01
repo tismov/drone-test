@@ -16,17 +16,17 @@ steps:
 #       - echo "Hello from first step" > step1
 #       - kubectl version --client
 
-  - name: restore
+  - name: kops_infra
     image: amazon/aws-cli
-    settings:
-#       pull: true
-#       endpoint: s3://k8s-kubeconfig-i7v
-      access_key:
+    environment:
+      keyid:
         from_secret: accesskey
-      secret_key:
+      key:
         from_secret: secretkey
-      commands: 
-        - aws --version
+    commands:
+      - export $accesskey
+      - export $secretkey
+      - aws --version
          
   - name: kops_infra
     image: turik207/kops:1.23.2.7
