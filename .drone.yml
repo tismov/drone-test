@@ -26,7 +26,8 @@ steps:
       secret_key:
         from_secret: secretkey
       restore: true
-    
+     commands: aws s3 ls
+         
   - name: kops_infra
     image: turik207/kops:1.23.2.7
     environment:
