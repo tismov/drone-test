@@ -15,7 +15,19 @@ steps:
 #       - pwd
 #       - echo "Hello from first step" > step1
 #       - kubectl version --client
-      
+
+  - name: restore
+    image: plugins/s3-cache
+    settings:
+      pull: true
+      endpoint: s3://k8s-kubeconfig-i7v
+      filename: config
+      access_key:
+        from_secret: accesskey
+      secret_key:
+        from_secret: secretkey
+      restore: true
+    
   - name: kops_infra
     image: turik207/kops:1.23.2.7
     environment:
@@ -30,20 +42,20 @@ steps:
       # - kops validate cluster --state=s3://kube-tismov-bt --wait 10m
 #       - cat $HOME/.kube/config
 #       - cat $HOME/.kube/config > config
-      - echo "this is config file" > config
+#       - echo "this is config file" > config
       - ls -l
       
-  - name: upload
-    image: plugins/s3
-    settings:
-      bucket: k8s-kubeconfig-i7v
-      region: eu-central-1
-      access_key:
-        from_secret: accesskey
-      secret_key: 
-        from_secret: secretkey
-      source: config
-      target: /
+#   - name: upload
+#     image: plugins/s3
+#     settings:
+#       bucket: k8s-kubeconfig-i7v
+#       region: eu-central-1
+#       access_key:
+#         from_secret: accesskey
+#       secret_key: 
+#         from_secret: secretkey
+#       source: config
+#       target: /
 
 
 #   - name: istioctl
