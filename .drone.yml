@@ -17,15 +17,14 @@ steps:
 #       - kubectl version --client
 
   - name: restore
-    image: plugins/s3-cache
+    image: amazon/aws-cli
     settings:
-      pull: true
-      endpoint: s3://k8s-kubeconfig-i7v
+#       pull: true
+#       endpoint: s3://k8s-kubeconfig-i7v
       access_key:
         from_secret: accesskey
       secret_key:
         from_secret: secretkey
-      restore: true
       commands: aws s3 ls
          
   - name: kops_infra
