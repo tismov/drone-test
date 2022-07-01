@@ -21,7 +21,6 @@ steps:
     settings:
       pull: true
       endpoint: s3://k8s-kubeconfig-i7v
-      filename: config
       access_key:
         from_secret: accesskey
       secret_key:
