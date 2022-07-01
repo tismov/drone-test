@@ -16,7 +16,7 @@ steps:
 #       - echo "Hello from first step" > step1
 #       - kubectl version --client
 
-  - name: kops_infra
+  - name: kops_infradede
     image: amazon/aws-cli
     environment:
       keyid:
