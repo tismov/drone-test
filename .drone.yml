@@ -4,19 +4,19 @@ name: default
 
 steps:
 
-#   - name: test
-#     image: turik207/kubectl:1.23
-#     environment:
-#       keyid:
-#         from_secret: keyid
-#       key:
-#         from_secret: key
-#     commands:
-#       - pwd
-#       - echo "Hello from first step" > step1
-#       - kubectl version --client
+  - name: create file
+    image: turik207/kubectl:1.23
+    environment:
+      keyid:
+        from_secret: keyid
+      key:
+        from_secret: key
+    commands:
+      - pwd
+      - echo "Hello from first step" > step1
+      - kubectl version --client
 
-  - name: kops_infradede
+  - name: copy file to aws s3
     image: amazon/aws-cli
     environment:
       keyid:
@@ -27,22 +27,16 @@ steps:
       - export $accesskey
       - export $secretkey
       - aws --version
+      - aws s3 cp step1 s3://k8s-kubeconfig-i7v
          
-  - name: kops_infra
-    image: turik207/kops:1.23.2.7
+  - name: show files in bucket
+    image: amazon/aws-cli
     environment:
       keyid:
-        from_secret: keyid
+        from_secret: accesskey
       key:
-        from_secret: key
+        from_secret: secretkey
     commands:
-      - export $keyid
-      - export $key
-      # - kops create cluster --name cluster.turali7v.click --zones eu-central-1a --state s3://kube-tismov-bt --yes
-      # - kops validate cluster --state=s3://kube-tismov-bt --wait 10m
-#       - cat $HOME/.kube/config
-#       - cat $HOME/.kube/config > config
-#       - echo "this is config file" > config
       - ls -l
       
 #   - name: upload
