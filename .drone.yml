@@ -21,9 +21,9 @@ steps:
     image: amazon/aws-cli
     environment:
       accesskey:
-        from_secret: keyid
+        from_secret: seckeyid
       secretkey:
-        from_secret: key
+        from_secret: seckey
     commands:
       - echo $accesskey $$ echo $secretkey
       - aws --version
