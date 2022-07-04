@@ -23,11 +23,9 @@ steps:
       keyid:
         from_secret: keyid
       key:
-        from_secret: key
+        from_secret: secretkey
     commands:
-      - echo $keyid
-      - echo:
-        from_secret: keyid
+      - echo $keyid $$ echo $secretkey
       - aws --version
       - ls -al
       - aws s3 ls k8s-kubeconfig-i7v
