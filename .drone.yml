@@ -40,7 +40,7 @@ steps:
       key:
         from_secret: secretkey
     commands:
-      - ls -l
+      - ls -la
       
 #   - name: upload
 #     image: plugins/s3
