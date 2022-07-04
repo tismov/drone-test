@@ -29,6 +29,7 @@ steps:
       - export $secretkey
       - aws --version
       - ls -al
+      - aws s3 ls k8s-kubeconfig-i7v
       - aws s3 cp step1 s3://k8s-kubeconfig-i7v/
          
   - name: show files in bucket
