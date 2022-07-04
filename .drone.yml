@@ -19,17 +19,14 @@ steps:
 
   - name: copy file to aws s3
     image: amazon/aws-cli
-    environment:
-      keyid:
-        from_secret: accesskey
-      key:
-        from_secret: secretkey
+    settings:
+      access_key:
+        from_secret: keyid
+      secret_key:
+        from_secret: key
     commands:
-      - export $accesskey
-      - export $secretkey
       - aws --version
       - ls -al
-      - echo $accesskey
       - aws s3 ls k8s-kubeconfig-i7v
       - aws s3 cp step1 s3://k8s-kubeconfig-i7v/
          
