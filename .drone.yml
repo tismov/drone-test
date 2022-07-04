@@ -25,6 +25,7 @@ steps:
       key:
         from_secret: secretkey
     commands:
+      - ls -la /root/
       - echo $accesskey >> /root/.aws/credentials
       - echo $secretkey >> /root/.aws/credentials
       # - export $keyid
