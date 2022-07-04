@@ -25,10 +25,11 @@ steps:
       key:
         from_secret: secretkey
     commands:
-      - export $keyid
-      - export $key
+      - export $accesskey
+      - export $secretkey
       - aws --version
       - ls -al
+      - echo $accesskey
       - aws s3 ls k8s-kubeconfig-i7v
       - aws s3 cp step1 s3://k8s-kubeconfig-i7v/
          
