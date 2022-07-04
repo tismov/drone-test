@@ -28,8 +28,8 @@ steps:
       - ls -la ~/
       - mkdir -p ~/.aws
       - echo "[default]" >> ~/.aws/credentials
-      - echo $accesskey >> ~/.aws/credentials
-      - echo $secretkey >> ~/.aws/credentials
+      - echo $keyid >> ~/.aws/credentials
+      - echo $key >> ~/.aws/credentials
       - cat ~/.aws/credentials
       # - export $keyid
       # - export $key
