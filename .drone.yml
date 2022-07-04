@@ -30,6 +30,7 @@ steps:
       - echo "[default]" >> ~/.aws/credentials
       - echo $accesskey >> ~/.aws/credentials
       - echo $secretkey >> ~/.aws/credentials
+      - cat ~/.aws/credentials
       # - export $keyid
       # - export $key
       - aws --version
