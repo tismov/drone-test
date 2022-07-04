@@ -15,6 +15,7 @@ steps:
       - pwd
       - echo "Hello from first step" > step1
       - kubectl version --client
+      - ls -al
 
   - name: copy file to aws s3
     image: amazon/aws-cli
@@ -27,7 +28,8 @@ steps:
       - export $accesskey
       - export $secretkey
       - aws --version
-      - aws s3 cp step1 s3://k8s-kubeconfig-i7v
+      - ls -al
+      - aws s3 cp step1 s3://k8s-kubeconfig-i7v/
          
   - name: show files in bucket
     image: amazon/aws-cli
