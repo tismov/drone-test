@@ -26,8 +26,10 @@ steps:
         from_secret: secretkey
     commands:
       - ls -la ~/
-      - echo $accesskey >> /root/.aws/credentials
-      - echo $secretkey >> /root/.aws/credentials
+      - mkdir -p ~/.aws
+      - echo "[default]" >> ~/.aws/credentials
+      - echo $accesskey >> ~/.aws/credentials
+      - echo $secretkey >> ~/.aws/credentials
       # - export $keyid
       # - export $key
       - aws --version
