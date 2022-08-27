@@ -14,4 +14,3 @@ nodeGroups:
   - name             : node2
     instanceType     : t3.small
     desiredCapacity  : 1
-  
