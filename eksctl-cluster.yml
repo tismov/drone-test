@@ -15,9 +15,3 @@ nodeGroups:
     instanceType     : t3.small
     desiredCapacity  : 1
   
-password:
-  - password:qwerty123
-  - secret: tural123!#!
-  
-key:
-  - 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
